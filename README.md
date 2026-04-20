@@ -1,8 +1,8 @@
                                                                                                                                                                            
   A futuristic, interactive portfolio website designed to showcase technical skill through an immersive, cyberpunk-inspired user experience. This project goes beyond a
-  static collection of links by simulating a fully functional, command-line interface (CLI) system experience.                                                              
-                  
-  https://img.shields.io/badge/License-MIT-blue.svg                                                                                                                         
+  static collection of links by simulating a fully functional, command-line interface (CLI) system experience.                               
+
+  
   https://img.shields.io/badge/Technologies-HTML%20CSS%20JavaScript-blue.svg
                                                                                                                                                                             
   **Features **                                                                                                                                                              
