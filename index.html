@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karan Mahakur | Full Stack Developer</title>
+  <meta name="description"
+    content="Portfolio of Karan Mahakur — Full Stack Developer, Problem Solver & Blockchain Learner. Premium interactive cyberpunk experience." />
+  <meta name="keywords" content="Karan Mahakur, Full Stack Developer, Web Developer, Blockchain, Portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow+Condensed:ital,wght@1,700;1,900&family=Bebas+Neue&family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Teko:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="loader-logo">KM</div>
+      <div class="loader-status-row">
+        <span class="loader-status-dot"></span>
+        <span id="loader-text">BOOTING KARAN OS v2.0.26</span>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+      <div class="loader-percent" id="loader-percent">0%</div>
+    </div>
+    <div class="scan-line"></div>
+    <div class="loader-corner tl"></div>
+    <div class="loader-corner tr"></div>
+    <div class="loader-corner bl"></div>
+    <div class="loader-corner br"></div>
+  </div>
+
+  <!-- Cursor Glow -->
+  <div id="cursor-glow"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- Sticky Navbar -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo flicker" id="nav-logo">
+        <span class="logo-k">K</span><span class="logo-m">M</span>
+        <span class="logo-tag">.dev</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#arcade" class="nav-link">Arcade</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-status">
+          <span class="status-dot"></span>
+          <span class="status-text">ONLINE</span>
+        </div>
+        <button class="sound-btn" id="sound-btn" title="Toggle Sound">
+          <span class="sound-icon">🔊</span>
+        </button>
+        <div class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HUD Notification -->
+  <div id="hud-notify" class="hud-notify hidden"></div>
+
+  <!-- ═══════════════════════════════════
+       PERSISTENT JOURNEY HUD
+       Updates as user scrolls between locations
+  ═══════════════════════════════════ -->
+  <div id="journey-hud" aria-hidden="true">
+    <div class="jhud-corner tl"></div>
+    <div class="jhud-corner tr"></div>
+    <div class="jhud-corner bl"></div>
+    <div class="jhud-inner">
+      <div class="jhud-row">
+        <span class="jhud-label">// LOCATION</span>
+        <span class="jhud-value" id="jhud-loc">NEON GATE DISTRICT</span>
+      </div>
+      <div class="jhud-row">
+        <span class="jhud-coord" id="jhud-coord">28.6139°N · 77.2090°E</span>
+        <span class="jhud-sep">·</span>
+        <span class="jhud-clock" id="jhud-clock">00:00:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location transition flash overlay -->
+  <div id="loc-flash" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════ -->
+  <section id="hero" data-location="NEON GATE DISTRICT" data-coords="28.6139°N · 77.2090°E">
+    <canvas id="bg-canvas"></canvas>
+    <div class="hero-overlay"></div>
+    <!-- Left yellow atmospheric panel -->
+    <div class="hero-yellow-panel" aria-hidden="true"></div>
+    <!-- Right crimson atmospheric panel -->
+    <div class="hero-red-panel" aria-hidden="true"></div>
+    <div class="hero-layout">
+
+      <!-- ══ LEFT PANEL — Photo + Bio ══ -->
+      <div class="hero-left">
+        <!-- Photo frame with CP2077 corner brackets -->
+        <div class="hero-photo-wrap">
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner tr"></div>
+          <div class="photo-corner bl"></div>
+          <div class="photo-corner br"></div>
+          <div class="photo-scan-line"></div>
+          <!-- Replace src with your actual photo path -->
+          <img src="photo.jpg" alt="Karan Mahakur" class="hero-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <!-- Fallback avatar shown when no photo -->
+          <div class="hero-photo-placeholder">
+            <span class="placeholder-icon">⬡</span>
+            <span class="placeholder-label">KARAN.jpg</span>
+          </div>
+        </div>
+
+        <!-- Bio panel -->
+        <div class="hero-bio">
+          <div class="bio-tag">// IDENTITY.TXT</div>
+          <p class="bio-text">
+            Full Stack Developer crafting premium digital experiences.
+            Specializing in <span class="bio-accent gold">Web</span>,
+            <span class="bio-accent blue">AI</span> &amp;
+            <span class="bio-accent red">Blockchain</span> — where code meets creativity.
+          </p>
+          <div class="bio-chips">
+            <span class="bio-chip">React</span>
+            <span class="bio-chip">Python</span>
+            <span class="bio-chip">Java</span>
+            <span class="bio-chip">SQL</span>
+            <span class="bio-chip chip-learning">Web3 ↗</span>
+          </div>
+          <div class="bio-location">
+            <span class="bio-loc-dot"></span>
+            <span>India &nbsp;·&nbsp; Open to Remote</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ RIGHT PANEL — existing title design (UNCHANGED) ══ -->
+      <div class="hero-right">
+        <div class="hero-content">
+          <!-- CP2077-style role label -->
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            SYSTEM ONLINE &mdash; FULL STACK DEVELOPER
+          </div>
+          <h1 class="hero-title">
+            <div class="hero-name-slab">
+              <span class="hero-name-top">KARAN</span>
+            </div>
+            <div class="hero-2077-line" aria-hidden="true">
+              <span class="hero-2077-year">// PORTFOLIO</span>
+              <span class="hero-2077-dot"></span>
+              <span class="hero-2077-edition">2077</span>
+            </div>
+            <span class="hero-name-bottom glitch-text" data-text="MAHAKUR">MAHAKUR</span>
+          </h1>
+          <div class="hero-subtitle">
+            <span class="type-cursor">▮</span>
+            <span id="typed-text"></span>
+          </div>
+          <div class="hero-btns">
+            <button class="btn-primary" id="enter-system-btn">
+              <span class="btn-icon">⚡</span><span class="btn-text"> Enter System</span>
+            </button>
+            <a href="#projects" class="btn-secondary">
+              <span class="btn-icon">▶</span><span class="btn-text"> View Projects</span>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">3+</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">10+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">4</span>
+              <span class="stat-label">Languages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .hero-layout -->
+    <div class="scroll-hint">
+      <div class="scroll-arrow"></div>
+      <span>SCROLL DOWN</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       ABOUT SECTION — DATA ALLEY
+  ═══════════════════════════════════ -->
+  <section id="about" data-location="DATA ALLEY" data-coords="28.6199°N · 77.2190°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">DATA ALLEY</span>
+      <span class="loc-enter-coords">28.6199°N · 77.2190°E</span>
+    </div>
+    <div class="section-header">
+      <div class="section-tag">// IDENTITY_ARCHIVE</div>
+      <h2 class="section-title">Origin <span class="accent-gold">Archive</span></h2>
+      <p class="section-sub">Every developer has a story. This is mine.</p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Hologram identity panel -->
+      <div class="about-hologram">
+        <div class="holo-frame">
+          <div class="holo-corner tl"></div>
+          <div class="holo-corner tr"></div>
+          <div class="holo-corner bl"></div>
+          <div class="holo-corner br"></div>
+          <div class="holo-scan"></div>
+          <div class="holo-inner">
+            <div class="holo-label">// IDENTITY.DAT</div>
+            <div class="holo-name">KARAN MAHAKUR</div>
+            <div class="holo-role">FULL STACK DEVELOPER</div>
+            <div class="holo-divider"></div>
+            <div class="holo-stat-row">
+              <span class="holo-stat"><span class="holo-n">3+</span> Years</span>
+              <span class="holo-stat"><span class="holo-n">10+</span> Projects</span>
+              <span class="holo-stat"><span class="holo-n">4</span> Languages</span>
+            </div>
+            <div class="holo-status">
+              <span class="holo-dot"></span> SYSTEM ONLINE
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating data panels -->
+      <div class="about-panels">
+        <div class="data-panel" style="--delay:0s">
+          <div class="dp-icon">⚡</div>
+          <div class="dp-content">
+            <div class="dp-title">THE BUILDER</div>
+            <p class="dp-text">I build immersive digital experiences that sit at the intersection of design and
+              engineering. Every pixel is intentional, every line of code purposeful.</p>
+          </div>
+        </div>
+        <div class="data-panel" style="--delay:0.15s">
+          <div class="dp-icon">🧠</div>
+          <div class="dp-content">
+            <div class="dp-title">THE PROBLEM SOLVER</div>
+            <p class="dp-text">Complex systems excite me. I thrive on debugging edge cases, optimising algorithms, and
+              finding elegant solutions where others see roadblocks.</p>
+          </div>
+        </div>
+        <div class="data-panel" style="--delay:0.3s">
+          <div class="dp-icon">🔗</div>
+          <div class="dp-content">
+            <div class="dp-title">THE EXPLORER</div>
+            <p class="dp-text">Currently deep-diving into Blockchain &amp; Web3 — curious about decentralised systems
+              and the future of the open internet.</p>
+          </div>
+        </div>
+        <div class="data-panel" style="--delay:0.45s">
+          <div class="dp-icon">🎮</div>
+          <div class="dp-content">
+            <div class="dp-title">THE CREATOR</div>
+            <p class="dp-text">From hackathons to personal projects, I love turning ideas into products people actually
+              want to use — and have fun building.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       ARCADE SECTION (New Game System)
+  ═══════════════════════════════════ -->
+  <section id="arcade" data-location="SIMULATION ARENA" data-coords="28.6250°N · 77.2310°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">SIMULATION ARENA</span>
+      <span class="loc-enter-coords">28.6250°N · 77.2310°E</span>
+    </div>
+    <div class="section-header">
+      <div class="section-tag">// INTERACTIVE_ARCADE</div>
+      <h2 class="section-title">Dev <span class="accent-gold">Arcade</span></h2>
+      <p class="section-sub">Five interactive challenges that show who Karan really is.</p>
+    </div>
+
+    <div class="arcade-grid">
+
+      <!-- A: KARAN_OS Terminal — Premium Command Center -->
+      <div class="arcade-card terminal-card kos-card" id="arcade-terminal">
+
+        <!-- ── Boot overlay (shown during boot seq) ── -->
+        <div class="kos-boot" id="kos-boot">
+          <div class="kos-boot-inner">
+            <div class="kos-boot-logo">KARAN<span>_OS</span></div>
+            <div class="kos-boot-ver">v2.0 // SYSTEM INITIALIZING</div>
+            <div class="kos-boot-lines" id="kos-boot-lines"></div>
+            <div class="kos-boot-bar-wrap"><div class="kos-boot-bar" id="kos-boot-bar"></div></div>
+          </div>
+        </div>
+
+        <!-- ── Terminal window ── -->
+        <div class="kos-win" id="kos-win">
+
+          <!-- Title bar (draggable handle) -->
+          <div class="kos-titlebar" id="kos-titlebar">
+            <div class="kos-tb-left">
+              <span class="kos-tb-dot red"   id="kos-close"   title="Close"></span>
+              <span class="kos-tb-dot yellow" id="kos-minimize" title="Minimize"></span>
+              <span class="kos-tb-dot green"  id="kos-maximize" title="Maximize"></span>
+            </div>
+            <div class="kos-tb-title">
+              <span class="kos-tb-icon">⬡</span>
+              <span>SYSTEM CORE</span>
+              <span class="kos-tb-sub">// KARAN_OS v2.0</span>
+            </div>
+            <div class="kos-tb-right">
+              <span class="kos-tb-stat" id="kos-stat-dot"></span>
+              <span class="kos-tb-stattext" id="kos-stat-text">ONLINE</span>
+              <span class="kos-tb-clock" id="kos-clock">00:00:00</span>
+            </div>
+          </div>
+
+          <!-- Body: sidebar filesystem + main terminal -->
+          <div class="kos-body">
+
+            <!-- Filesystem sidebar -->
+            <div class="kos-fs" id="kos-fs">
+              <div class="kos-fs-label">// FILESYSTEM</div>
+              <div class="kos-fs-tree">
+                <div class="kos-fs-dir open" data-path="/">
+                  <span class="kos-fs-icon">📁</span> ~/
+                </div>
+                <div class="kos-fs-item" data-path="/projects">
+                  <span class="kos-fs-icon">📂</span> projects/
+                </div>
+                <div class="kos-fs-item kos-fs-sub" data-file="readme.txt">readme.txt</div>
+                <div class="kos-fs-item kos-fs-sub" data-file="stack.json">stack.json</div>
+                <div class="kos-fs-item" data-path="/about">
+                  <span class="kos-fs-icon">📂</span> about/
+                </div>
+                <div class="kos-fs-item kos-fs-sub" data-file="bio.txt">bio.txt</div>
+                <div class="kos-fs-item kos-fs-sub" data-file="contact.txt">contact.txt</div>
+                <div class="kos-fs-item kos-fs-secret" data-file="secret.enc">
+                  <span class="kos-fs-icon">🔒</span> secret.enc
+                </div>
+              </div>
+            </div>
+
+            <!-- Main terminal -->
+            <div class="kos-main">
+
+              <!-- Scanline + grid atmosphere -->
+              <div class="kos-atmosphere" aria-hidden="true">
+                <div class="kos-scanlines"></div>
+                <div class="kos-gridlines"></div>
+              </div>
+
+              <!-- Output area -->
+              <div class="kos-output" id="terminal-output" role="log" aria-live="polite"></div>
+
+              <!-- Auto-suggest bar -->
+              <div class="kos-suggest" id="kos-suggest"></div>
+
+              <!-- Input row -->
+              <div class="kos-input-row">
+                <span class="kos-prompt">
+                  <span class="kos-prompt-user">karan</span><span class="kos-prompt-at">@</span><span class="kos-prompt-host">portfolio</span><span class="kos-prompt-path" id="kos-cwd">:~$</span>
+                </span>
+                <input
+                  type="text"
+                  id="terminal-input"
+                  class="kos-input"
+                  placeholder="type a command..."
+                  autocomplete="off"
+                  spellcheck="false"
+                  aria-label="Terminal input"
+                />
+                <span class="kos-cursor-blink" aria-hidden="true">█</span>
+              </div>
+
+            </div><!-- end .kos-main -->
+          </div><!-- end .kos-body -->
+
+          <!-- Particle layer -->
+          <canvas class="kos-particles" id="kos-particles" aria-hidden="true"></canvas>
+
+        </div><!-- end .kos-win -->
+
+        <!-- ── Mini-game overlay ── -->
+        <div class="kos-game-overlay hidden" id="kos-game">
+          <div class="kos-game-box">
+            <div class="kos-game-title">FIREWALL BREACH</div>
+            <div class="kos-game-sub">Crack the sequence before time runs out</div>
+            <div class="kos-game-timer" id="kg-timer">10</div>
+            <div class="kos-game-seq" id="kg-seq"></div>
+            <div class="kos-game-input-row">
+              <input id="kg-input" class="kos-game-input" maxlength="6" autocomplete="off" placeholder="Enter sequence_" />
+              <button id="kg-submit" class="kos-game-btn">CRACK</button>
+            </div>
+            <div class="kos-game-msg" id="kg-msg"></div>
+            <button class="kos-game-close" id="kg-close">✕ ABORT</button>
+          </div>
+        </div>
+
+      </div><!-- end .kos-card -->
+
+      <!-- B: Code Break Puzzle -->
+      <div class="arcade-card" id="arcade-codebreak">
+        <div class="arcade-card-header">
+          <span class="arcade-num">02</span>
+          <span class="arcade-title">Code Break</span>
+          <span class="arcade-tag">PUZZLE</span>
+        </div>
+        <p class="arcade-desc">Enter the 3-digit access code to reveal a featured project.</p>
+        <div class="codebreak-hint" id="codebreak-hint">
+          HINT: <span class="accent-gold" id="codebreak-hint-text">Loading clue...</span>
+        </div>
+        <div class="codebreak-display">
+          <div class="digit-box" id="digit-0">_</div>
+          <div class="digit-box" id="digit-1">_</div>
+          <div class="digit-box" id="digit-2">_</div>
+        </div>
+        <div class="codebreak-pad">
+          <button class="pad-btn" data-d="1">1</button><button class="pad-btn" data-d="2">2</button><button
+            class="pad-btn" data-d="3">3</button>
+          <button class="pad-btn" data-d="4">4</button><button class="pad-btn" data-d="5">5</button><button
+            class="pad-btn" data-d="6">6</button>
+          <button class="pad-btn" data-d="7">7</button><button class="pad-btn" data-d="8">8</button><button
+            class="pad-btn" data-d="9">9</button>
+          <button class="pad-btn pad-clear" data-d="C">CLR</button><button class="pad-btn" data-d="0">0</button><button
+            class="pad-btn pad-enter" data-d="E">OK</button>
+        </div>
+        <div class="codebreak-result hidden" id="codebreak-result">
+          <div class="result-label accent-gold">ACCESS GRANTED</div>
+          <div class="result-project" id="result-project-name"></div>
+          <div class="result-desc" id="result-project-desc"></div>
+        </div>
+      </div>
+
+      <!-- C: Drag & Drop Architecture -->
+      <div class="arcade-card drag-card" id="arcade-dragdrop">
+        <div class="arcade-card-header">
+          <span class="arcade-num">03</span>
+          <span class="arcade-title">Architecture Game</span>
+          <span class="arcade-tag">DRAG & DROP</span>
+        </div>
+        <p class="arcade-desc">Drag the tech icons into the correct layer.</p>
+        <div class="drag-source" id="drag-source">
+          <div class="drag-chip" draggable="true" data-cat="frontend" id="dc-html">HTML</div>
+          <div class="drag-chip" draggable="true" data-cat="frontend" id="dc-css">CSS</div>
+          <div class="drag-chip" draggable="true" data-cat="frontend" id="dc-js">JS</div>
+          <div class="drag-chip" draggable="true" data-cat="backend" id="dc-py">Python</div>
+          <div class="drag-chip" draggable="true" data-cat="backend" id="dc-java">Java</div>
+          <div class="drag-chip" draggable="true" data-cat="backend" id="dc-cpp">C++</div>
+          <div class="drag-chip" draggable="true" data-cat="backend" id="dc-c">C</div>
+          <div class="drag-chip" draggable="true" data-cat="database" id="dc-sql">SQL</div>
+        </div>
+        <div class="drop-zones">
+          <div class="drop-zone" data-zone="frontend" id="zone-frontend">
+            <div class="zone-label">⚡ Frontend</div>
+          </div>
+          <div class="drop-zone" data-zone="backend" id="zone-backend">
+            <div class="zone-label">⚙ Backend</div>
+          </div>
+          <div class="drop-zone" data-zone="database" id="zone-database">
+            <div class="zone-label">🗄 Database</div>
+          </div>
+        </div>
+        <div class="drag-score-row">
+          Score: <span class="accent-gold" id="drag-score">0</span>/8
+          <button class="drag-reset" id="drag-reset">↺ Reset</button>
+        </div>
+      </div>
+
+      <!-- D: Reaction Challenge -->
+      <div class="arcade-card" id="arcade-reaction">
+        <div class="arcade-card-header">
+          <span class="arcade-num">04</span>
+          <span class="arcade-title">Reaction Speed</span>
+          <span class="arcade-tag">REFLEX</span>
+        </div>
+        <p class="arcade-desc">Click the target as fast as you can when it appears!</p>
+        <div class="reaction-arena" id="reaction-arena">
+          <div class="reaction-idle" id="reaction-idle">
+            <button class="btn-primary" id="reaction-start">START</button>
+          </div>
+          <div class="reaction-target hidden" id="reaction-target">⬡</div>
+          <div class="reaction-stats" id="reaction-stats">
+            <div>Round: <span class="accent-gold" id="r-round">0</span>/5</div>
+            <div>Best: <span class="accent-gold" id="r-best">—</span></div>
+            <div>Avg: <span class="accent-blue" id="r-avg">—</span></div>
+          </div>
+        </div>
+        <div class="reaction-result hidden" id="reaction-result"></div>
+      </div>
+
+      <!-- E: Easter Egg (Developer Mode) -->
+      <div class="arcade-card easter-card" id="arcade-easter">
+        <div class="arcade-card-header">
+          <span class="arcade-num">05</span>
+          <span class="arcade-title">Developer Mode</span>
+          <span class="arcade-tag">SECRET</span>
+        </div>
+        <p class="arcade-desc">Find the hidden object in the corner of this page to activate Developer Mode.</p>
+        <div class="easter-status" id="easter-status">
+          <div class="easter-lock">🔒</div>
+          <div class="easter-label">CLASSIFIED</div>
+          <div class="easter-sub">Search the page...</div>
+        </div>
+        <div class="easter-unlocked hidden" id="easter-unlocked">
+          <div class="easter-badge">🐉</div>
+          <div class="accent-gold" style="font-family:var(--font-mono);font-size:.85rem">DEVELOPER MODE ACTIVE</div>
+          <div style="font-size:.8rem;color:var(--text-dim);margin-top:.4rem">You see what others don't.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════ -->
+  <section id="projects" data-location="PROJECT VAULT" data-coords="28.6300°N · 77.2450°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">PROJECT VAULT</span>
+      <span class="loc-enter-coords">28.6300°N · 77.2450°E</span>
+    </div>
+    <div class="section-header" style="display:none"></div>
+
+    <!-- ═══ CP2077 PROJECT DASHBOARD ═══ -->
+    <div class="pdash">
+
+      <!-- TOP HUD BAR -->
+      <div class="pdash-topbar">
+        <div class="pdash-topbar-left">
+          <div class="pdash-topbar-icon">◈</div>
+          <div>
+            <div class="pdash-topbar-label">// PROJECT_VAULT</div>
+            <div class="pdash-topbar-sub">KARAN MAHAKUR · DEVELOPER PORTFOLIO · 2077</div>
+          </div>
+        </div>
+        <div class="pdash-topbar-right">
+          <span class="pdash-counter"><span id="pdash-num">01</span> / 04</span>
+          <span class="pdash-active-tag">ACTIVE</span>
+        </div>
+        <div class="pdash-hud-line">
+          <div class="pdash-hud-fill" id="pdash-hud-fill"></div>
+        </div>
+      </div>
+
+      <!-- SECTION TITLE ROW -->
+      <div class="pdash-title-row">
+        <span class="pdash-title-accent">FEATURED</span>
+        <span class="pdash-title-main">PROJECTS</span>
+        <div class="pdash-scanline" aria-hidden="true"></div>
+      </div>
+
+      <!-- COLUMN HEADER ROW -->
+      <div class="pdash-col-headers">
+        <div class="pdash-col-hdr">
+          <span class="col-letter">A</span>
+          <span class="col-label">PROJECT INDEX</span>
+        </div>
+        <div class="pdash-col-hdr">
+          <span class="col-letter">B</span>
+          <span class="col-label">SYSTEM DETAILS</span>
+        </div>
+        <div class="pdash-col-hdr pdash-col-hdr-c">
+          <span class="col-letter">C</span>
+          <span class="col-label">ACTIONS</span>
+        </div>
+      </div>
+
+      <!-- MAIN PANEL (3 columns) -->
+      <div class="pdash-main">
+
+        <!-- LEFT — Project List -->
+        <div class="pdash-left">
+          <div class="pdash-list" id="pdash-list">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- CENTER — Detail Window -->
+        <div class="pdash-center">
+          <div class="pdash-detail" id="pdash-detail">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- RIGHT — Actions -->
+        <div class="pdash-right">
+          <div class="pdash-right-label">// ACTIONS</div>
+          <a href="#" class="pdash-btn" id="pdash-btn-demo" target="_blank" rel="noopener">
+            <span class="pdash-btn-icon">▶</span> LIVE DEMO
+          </a>
+          <a href="#" class="pdash-btn" id="pdash-btn-github" target="_blank" rel="noopener">
+            <span class="pdash-btn-icon">⎇</span> GITHUB
+          </a>
+          <button class="pdash-btn pdash-btn-next" id="pdash-btn-next">
+            <span class="pdash-btn-icon">→</span> NEXT
+          </button>
+          <div class="pdash-sys-status">
+            <span class="pdash-sys-dot"></span>
+            STATUS: <span class="accent-gold" id="pdash-status-txt">ONLINE</span>
+          </div>
+        </div>
+
+      </div><!-- end .pdash-main -->
+
+      <!-- BOTTOM SYSTEM FOOTER TICKER -->
+      <div class="pdash-footer">
+        <span class="pdash-footer-ticker">
+          ARASAKA LEVEL PROJECT ACCESS GRANTED &nbsp;·&nbsp; DEVELOPER CLEARANCE ACTIVE &nbsp;·&nbsp;
+          KARAN MAHAKUR &nbsp;·&nbsp; FULL STACK DEVELOPER &nbsp;·&nbsp; SYSTEM ONLINE &nbsp;·&nbsp;
+          ARASAKA LEVEL PROJECT ACCESS GRANTED &nbsp;·&nbsp; DEVELOPER CLEARANCE ACTIVE &nbsp;·&nbsp;
+          KARAN MAHAKUR &nbsp;·&nbsp; FULL STACK DEVELOPER &nbsp;·&nbsp; SYSTEM ONLINE &nbsp;·&nbsp;
+        </span>
+      </div>
+
+    </div><!-- end .pdash -->
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════ -->
+  <section id="skills" data-location="CODE FORGE" data-coords="28.6350°N · 77.2580°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">CODE FORGE</span>
+      <span class="loc-enter-coords">28.6350°N · 77.2580°E</span>
+    </div>
+    <div class="section-header">
+      <div class="section-tag">// SKILL_MATRIX</div>
+      <h2 class="section-title">Tech <span class="accent-gold">Stack</span></h2>
+      <p class="section-sub">Full stack toolkit — from DOM to database, C to cloud.</p>
+    </div>
+    <div class="skills-container">
+      <div class="skills-bars">
+
+        <!-- Frontend -->
+        <div class="skill-category-label">⚡ Frontend</div>
+        <div class="skill-item" data-skill="HTML">
+          <div class="skill-header">
+            <span class="skill-name">HTML5</span>
+            <span class="skill-icon">🌐</span>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-skill="CSS">
+          <div class="skill-header">
+            <span class="skill-name">CSS3</span>
+            <span class="skill-icon">🎨</span>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-skill="JS">
+          <div class="skill-header">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-icon">⚡</span>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="80"></div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category-label">⚙ Backend</div>
+        <div class="skill-item" data-skill="Python">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-icon">🐍</span>
+            <span class="skill-pct">75%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="75"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-skill="Java">
+          <div class="skill-header">
+            <span class="skill-name">Java</span>
+            <span class="skill-icon">☕</span>
+            <span class="skill-pct">70%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="70"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-skill="C++">
+          <div class="skill-header">
+            <span class="skill-name">C / C++</span>
+            <span class="skill-icon">⚙</span>
+            <span class="skill-pct">68%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="68"></div>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-category-label">🗄 Database</div>
+        <div class="skill-item" data-skill="SQL">
+          <div class="skill-header">
+            <span class="skill-name">SQL / MySQL</span>
+            <span class="skill-icon">🗄</span>
+            <span class="skill-pct">72%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="72"></div>
+          </div>
+        </div>
+
+        <!-- Learning -->
+        <div class="skill-category-label learning-label">📡 Currently Learning</div>
+        <div class="skill-item learning-skill" data-skill="Blockchain">
+          <div class="skill-header">
+            <span class="skill-name">Blockchain / Web3</span>
+            <span class="skill-icon">🔗</span>
+            <span class="skill-pct">30%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill learning-bar" data-width="30"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tech Grid -->
+      <div class="skills-cyber-grid">
+        <div class="tech-stack-panel">
+          <div class="tech-panel-label">// TECH_GRID</div>
+          <div class="cyber-hexes">
+            <div class="hex active" data-cat="frontend">HTML</div>
+            <div class="hex active" data-cat="frontend">CSS</div>
+            <div class="hex active" data-cat="frontend">JS</div>
+            <div class="hex" data-cat="backend">Python</div>
+            <div class="hex" data-cat="backend">Java</div>
+            <div class="hex" data-cat="backend">C / C++</div>
+            <div class="hex" data-cat="database">MySQL</div>
+            <div class="hex" data-cat="database">SQL</div>
+            <div class="hex" data-cat="tools">Git</div>
+            <div class="hex" data-cat="tools">GitHub</div>
+            <div class="hex learning" data-cat="learning">Blockchain</div>
+            <div class="hex learning" data-cat="learning">Web3</div>
+          </div>
+          <div class="tech-legend">
+            <span class="legend-dot frontend-dot"></span>Frontend
+            <span class="legend-dot backend-dot"></span>Backend
+            <span class="legend-dot db-dot"></span>Database
+            <span class="legend-dot learn-dot"></span>Learning
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════ -->
+  <section id="contact" data-location="FINAL TRANSMISSION" data-coords="28.6400°N · 77.2700°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">FINAL TRANSMISSION</span>
+      <span class="loc-enter-coords">28.6400°N · 77.2700°E</span>
+    </div>
+    <div class="contact-bg"></div>
+    <div class="section-header">
+      <div class="section-tag">// TRANSMIT_SIGNAL</div>
+      <h2 class="section-title">Ready to build the <span class="accent-red">future</span> together?</h2>
+      <p class="section-sub">Open to internships, freelance, and collabs. Let's make something unforgettable.</p>
+    </div>
+    <div class="contact-cta-row">
+      <a href="mailto:karan@example.com" class="btn-primary" id="hire-me-btn">
+        <span class="btn-icon">🚀</span> Hire Me
+      </a>
+      <a href="mailto:karan@example.com" class="btn-secondary" id="contact-me-btn">
+        <span class="btn-icon">📡</span> Contact Me
+      </a>
+    </div>
+    <div class="contact-info-row">
+      <div class="contact-chip"><span>📧</span> karan@example.com</div>
+      <div class="contact-chip"><span>💼</span> github.com/karanmahakur</div>
+      <div class="contact-chip"><span>🌐</span> karanmahakur.dev</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       SKYLINE OVERLOOK — Ending Scene
+  ═══════════════════════════════════ -->
+  <section id="skyline" data-location="SKYLINE OVERLOOK" data-coords="28.6500°N · 77.2900°E">
+    <div class="loc-entry-banner" aria-hidden="true">
+      <span class="loc-enter-label">// ENTERING ZONE</span>
+      <span class="loc-enter-name">SKYLINE OVERLOOK</span>
+      <span class="loc-enter-coords">28.6500°N · 77.2900°E</span>
+    </div>
+    <canvas id="skyline-canvas"></canvas>
+    <div class="skyline-content">
+      <div class="sky-tag">// JOURNEY_COMPLETE</div>
+      <div class="sky-title">Thanks for visiting<br>my <span class="accent-gold">world</span>.</div>
+      <div class="sky-sub">See you in the next <span class="accent-blue">build</span>.</div>
+      <div class="sky-sig">— Karan Mahakur</div>
+      <div class="sky-buttons">
+        <a href="#hero" class="btn-primary">
+          <span class="btn-icon">↑</span><span class="btn-text"> Back to Start</span>
+        </a>
+        <a href="mailto:karan@example.com" class="btn-secondary">
+          <span class="btn-icon">📡</span><span class="btn-text"> Hire Me</span>
+        </a>
+      </div>
+      <div class="sky-coords">
+        <span class="sky-coord-item">LAT 28.6500°N</span>
+        <span class="sky-coord-sep">·</span>
+        <span class="sky-coord-item">LNG 77.2900°E</span>
+        <span class="sky-coord-sep">·</span>
+        <span class="sky-coord-item" id="sky-time">00:00</span>
+      </div>
+    </div>
+    <!-- City skyline SVG silhouette -->
+    <div class="skyline-buildings" aria-hidden="true">
+      <div class="bldg" style="--h:160px;--w:40px;--l:3%;--delay:0s"></div>
+      <div class="bldg" style="--h:220px;--w:30px;--l:6%;--delay:.1s"></div>
+      <div class="bldg bldg-tall" style="--h:340px;--w:50px;--l:10%;--delay:.05s"></div>
+      <div class="bldg" style="--h:180px;--w:35px;--l:15%;--delay:.2s"></div>
+      <div class="bldg" style="--h:260px;--w:45px;--l:20%;--delay:.15s"></div>
+      <div class="bldg bldg-tall" style="--h:380px;--w:55px;--l:26%;--delay:.08s"></div>
+      <div class="bldg" style="--h:140px;--w:28px;--l:33%;--delay:.25s"></div>
+      <div class="bldg" style="--h:200px;--w:38px;--l:37%;--delay:.18s"></div>
+      <div class="bldg bldg-tall" style="--h:420px;--w:60px;--l:42%;--delay:.03s"></div>
+      <div class="bldg" style="--h:170px;--w:32px;--l:50%;--delay:.22s"></div>
+      <div class="bldg" style="--h:240px;--w:42px;--l:55%;--delay:.12s"></div>
+      <div class="bldg bldg-tall" style="--h:360px;--w:52px;--l:60%;--delay:.07s"></div>
+      <div class="bldg" style="--h:190px;--w:36px;--l:67%;--delay:.2s"></div>
+      <div class="bldg" style="--h:280px;--w:48px;--l:72%;--delay:.14s"></div>
+      <div class="bldg bldg-tall" style="--h:400px;--w:58px;--l:77%;--delay:.04s"></div>
+      <div class="bldg" style="--h:150px;--w:30px;--l:83%;--delay:.3s"></div>
+      <div class="bldg" style="--h:210px;--w:40px;--l:87%;--delay:.16s"></div>
+      <div class="bldg bldg-tall" style="--h:320px;--w:50px;--l:91%;--delay:.09s"></div>
+      <div class="bldg" style="--h:175px;--w:35px;--l:96%;--delay:.23s"></div>
+    </div>
+    <!-- Neon traffic lights drifting across -->
+    <div class="traffic-lights" aria-hidden="true">
+      <div class="tl-car" style="--dur:8s;--top:78%;--col:#f5c518"></div>
+      <div class="tl-car" style="--dur:12s;--top:82%;--col:#00c8e6;--delay:3s"></div>
+      <div class="tl-car" style="--dur:6s;--top:75%;--col:#e63946;--delay:1s"></div>
+      <div class="tl-car" style="--dur:10s;--top:85%;--col:#f5c518;--delay:5s"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-content">
+      <div class="footer-logo">KM<span>.dev</span></div>
+      <div class="footer-tagline">Coded with <span class="accent-red">❤</span> &amp; <span class="accent-gold">⚡</span>
+        by Karan Mahakur — Full Stack Developer</div>
+      <div class="footer-socials">
+        <a href="#" class="footer-social">GitHub</a>
+        <a href="#" class="footer-social">LinkedIn</a>
+        <a href="#" class="footer-social">Twitter</a>
+      </div>
+      <div class="footer-copy">© 2026 Karan Mahakur · System v2.0.26 · All rights reserved</div>
+    </div>
+    <div class="footer-line"></div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-top" aria-label="Back to top">↑</button>
+
+  <!-- Cyber Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Hidden Easter Egg -->
+  <div id="easter-egg" title="Developer Mode">🐉</div>
+
+  <!-- Reaction Modal -->
+  <div id="reaction-modal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-title">// REACTION_COMPLETE</div>
+      <div id="reaction-modal-body"></div>
+      <button class="modal-close" id="reaction-modal-close">CLOSE</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
