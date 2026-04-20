@@ -5,7 +5,7 @@
   https://img.shields.io/badge/License-MIT-blue.svg                                                                                                                         
   https://img.shields.io/badge/Technologies-HTML%20CSS%20JavaScript-blue.svg
                                                                                                                                                                             
-  ✨ Features                                                                                                                                                               
+  **Features **                                                                                                                                                              
                                                                                                                                                                             
   - Immersive UX: Built around a pseudo-terminal/OS aesthetic, giving visitors a sense of interacting with a sophisticated system.                                          
   - Interactive Elements: Features a simulated command-line interface (CLI) experience where users can run commands to navigate different sections of the portfolio.
@@ -13,7 +13,7 @@
   - Dynamic Content: All sections (About, Skills, Projects, Contact) are loaded and displayed dynamically via JavaScript, mimicking system calls.                           
   - Comprehensive Showcase: Designed to allow developers to showcase mastery in front-end development, scripting, and UX design principles.                                 
                                                                                                                                                                             
-  🚀 Getting Started                                                                                                                                                        
+ ** Getting Started  **                                                                                                                                                      
                                                                                                                                                                             
   These instructions will get you a copy of the project up and running on your local machine for development and testing.                                                   
                   
@@ -31,7 +31,7 @@
   2. Open in Browser:                                                                                                                                                       
   Since this is a pure client-side project, simply open the index.html file in your web browser to view the site.                                                           
                                                                                                                                                                             
-  📂 Project Structure                                                                                                                                                      
+  **Project Structure  **                                                                                                                                                    
                                                                                                                                                                             
   The project is organized into clean, separated concerns:                                                                                                                  
                   
@@ -44,8 +44,7 @@
   │   └── fonts/        # Custom fonts used for the terminal aesthetic.                                                                                                     
   └── README.md         # This file.                                                                                                                                        
                                                                                                                                                                             
-  🧑‍💻 Development & Customization Guide                                                                                                                                                                                                                                                                                                                
-  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ** Development & Customization Guide  **                                                                                                                                                                                                                                                                                                              
   The power of this project lies in its separation of structure, style, and behavior.                                                                                       
                   
   1. Styling (style.css)                                                                                                                                                    
@@ -67,14 +66,14 @@
   - Projects: Add new project objects to the dedicated project array. Include links, descriptions, and technologies used.
   - Contact: Update the contact information object within script.js.                                                                                                        
                                                                                                                                                                             
-  💡 Future Enhancements (Roadmap)                                                                                                                                          
+**  Future Enhancements (Roadmap)   **                                                                                                                                       
                                                                                                                                                                             
   1. Backend Integration: Integrate with a simple backend (e.g., Node/Express) to power a functional contact form that actually sends emails.                               
   2. Animation Polish: Implement more advanced CSS animations (e.g., character-by-character text typing effects for all content).
   3. Theming: Add a light/dark mode toggle, although the core theme is dark.                                                                                                
   4. API Integration: Fetch dynamic data (like live stock tickers or GitHub stats) to show real-time developer activity.                                                    
                                                                                                                                                                             
-  🤝 Contributing                                                                                                                                                           
+**   Contributing  **                                                                                                                                                         
                                                                                                                                                                             
   We welcome contributions! Whether it's fixing a bug, improving the code structure, or designing a new command, your help is greatly appreciated.                          
                   
@@ -84,7 +83,4 @@
   3. Commit your changes (git commit -m 'feat: Added amazing feature').  
   4. Push to the branch (git push origin feature/AmazingFeature).                                                                                                           
   5. Open a Pull Request.                                                                                                                                                   
-                                                                                                                                                                            
-  📄 License                                                                                                                                                                
-                                                                                                                                                                            
-  This project is licensed under the MIT License - see the LICENSE file for details.
+     
